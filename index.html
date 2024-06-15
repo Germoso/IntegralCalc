@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+      <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+      <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+        <h1>Python Integral and Derivative Calculator</h1>
+        <div class="radio-container">
+            <div class="radio-option">
+                <input type="radio" id="integration" name="calcType" value="integration" checked>
+                <label for="integration">Integration</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="derivation" name="calcType" value="derivation">
+                <label for="derivation">Derivation</label>
+            </div>
+        </div>
+        <div class="content-section">
+            <div id="integrationSection" class="input-container">
+                <div class="input-container">
+                    <label for="upperBound">Upper Bound:</label>
+                    <input type="text" id="upperBound">
+                </div>
+                <div class="input-container">
+                    <label for="lowerBound">Lower Bound:</label>
+                    <input type="text" id="lowerBound">
+                </div>
+                <div class="input-container">
+                    <label for="function">Function:</label>
+                    <input type="text" id="function">
+                </div>
+            </div>
+            <div id="derivationSection" class="input-container" style="display: none;">
+                <div class="input-container">
+                    <label for="functionDeriv">f(x) = </label>
+                    <input type="text" id="functionDeriv">
+                </div>
+            </div>
+        </div>
+        <button id="calculateButton">Calculate</button>
+        <div id="loadingOverlay" class="overlay">
+          <div class="overlay-content">
+            <div id="loadingIndicator">Loading...</div>
+          </div>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script src="src/main.js" type="text/javascript"></script>
+  </body>
+</html>
