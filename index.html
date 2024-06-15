@@ -2,11 +2,12 @@
 <html>
   <head>
       <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
     <div class="container">
-        <h1>Python Integral and Derivative Calculator</h1>
+        <h1>Integral and Derivative Calculator</h1>
         <div class="radio-container">
             <div class="radio-option">
                 <input type="radio" id="integration" name="calcType" value="integration" checked>
@@ -34,7 +35,7 @@
             </div>
             <div id="derivationSection" class="input-container" style="display: none;">
                 <div class="input-container">
-                    <label for="functionDeriv">f(x) = </label>
+                    <label for="functionDeriv">Function:</label>
                     <input type="text" id="functionDeriv">
                 </div>
             </div>
@@ -45,7 +46,7 @@
             <div id="loadingIndicator">Loading...</div>
           </div>
         </div>
-        <div id="result"></div>
+        <div id="result" style="margin-top:20px;"></div>
     </div>
     <script src="src/main.js" type="text/javascript"></script>
   </body>

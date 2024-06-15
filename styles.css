@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
     margin: 0;
     height: 100vh;
     display: flex;
@@ -13,17 +15,18 @@ body {
     width: 400px; /* Fixed width */
     height: 500px; /* Fixed height */
     padding: 20px;
-    background-color: white;
+    background-color: #1e1e1e;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-align: left;
     position: relative; /* Position relative for absolute positioning of button */
 }
 
 h1 {
-    color: #4CAF50;
+    color: #bb86fc;
     margin-bottom: 20px;
     text-align: center;
+    font-weight: 500;
 }
 
 .radio-container {
@@ -35,6 +38,10 @@ h1 {
     margin-bottom: 10px;
 }
 
+.radio-option input {
+    margin-right: 10px;
+}
+
 .content-section {
     flex-grow: 1;
     display: flex;
@@ -44,46 +51,50 @@ h1 {
     margin-bottom: 0px;
 }
 
-
 label {
     display: inline-block;
     width: 150px;
     text-align: left;
-    font-weight: bold;
+    font-weight: 500;
+    color: #e0e0e0;
 }
 
 input[type="text"] {
     width: calc(100% - 160px); /* Adjust width to fit the label */
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
     border-radius: 4px;
     margin-left: 10px;
+    background-color: #2b2b2b;
+    color: #e0e0e0;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #bb86fc;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     position: absolute;
     right: 20px;
     bottom: 20px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #9b59b6;
+    transform: translateY(-2px);
 }
-
-
 
 #result {
     font-size: 18px;
-    
     font-weight: bold;
     text-align: right;
+    color: #e0e0e0;
 }
 
 /* Full-screen overlay */
@@ -101,7 +112,7 @@ button:hover {
 }
 
 .overlay-content {
-    background-color: white;
+    background-color: #2b2b2b;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -109,5 +120,5 @@ button:hover {
 
 #loadingIndicator {
     font-size: 24px;
-    color: #4CAF50;
+    color: #bb86fc;
 }
