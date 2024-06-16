@@ -9,50 +9,55 @@
 </head>
 <body>
     <div class="container">
-        <h1>Integral and Derivative Calculator</h1>
-        <div class="radio-container">
-            <div class="radio-option">
-                <input type="radio" id="integration" name="calcType" value="integration" checked>
-                <label for="integration">Integration</label>
-            </div>
-            <div class="radio-option">
-                <input type="radio" id="derivation" name="calcType" value="derivation">
-                <label for="derivation">Derivation</label>
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'Options')">Options</button>
+            <button class="tab-button" onclick="openTab(event, 'Calculator')">Calculator</button>
+        </div>
+        <div id="Options" class="tab-content" style="display: block;">
+            <h1>Select Calculation Type</h1>
+            <div class="radio-container">
+                <button id="integration" value="integration" onclick="updateSelectedType('integration'); switchToCalculator()">Integration</button>
+                <button id="derivation" value="derivation" onclick="updateSelectedType('derivation'); switchToCalculator()">Derivation</button>
             </div>
         </div>
-        <div class="content-section">
-            <div id="integrationSection" class="input-container">
-                <div class="input-container">
-                    <label for="upperBound">Upper Bound:</label>
-                    <input type="text" id="upperBound" oninput="updateIntegralMath()">
+        <div id="Calculator" class="tab-content" style="display: none;">
+            <h1 id="calculatorTitle">Integral Calculator</h1>
+            <div class="content-section">
+                <div id="integrationSection" class="input-container">
+                    <div class="input-container">
+                        <label for="upperBound">Upper Bound:</label>
+                        <input type="text" id="upperBound" oninput="updateIntegralMath()">
+                    </div>
+                    <div class="input-container">
+                        <label for="lowerBound">Lower Bound:</label>
+                        <input type="text" id="lowerBound" oninput="updateIntegralMath()">
+                    </div>
+                    <div class="input-container">
+                        <label for="function">Function:</label>
+                        <input type="text" id="function" oninput="updateIntegralMath()">
+                    </div>
+                    <div id="integralPreview" class="math-preview"></div>
                 </div>
-                <div class="input-container">
-                    <label for="lowerBound">Lower Bound:</label>
-                    <input type="text" id="lowerBound" oninput="updateIntegralMath()">
+                <div id="derivationSection" class="input-container" style="display: none;">
+                    <div class="input-container">
+                        <label for="functionDeriv">Function:</label>
+                        <input type="text" id="functionDeriv" oninput="updateMath('functionDeriv', 'functionDerivPreview')">
+                    </div>
+                    <div id="functionDerivPreview" class="math-preview"></div>
                 </div>
-                <div class="input-container">
-                    <label for="function">Function:</label>
-                    <input type="text" id="function" oninput="updateIntegralMath()">
-                </div>
-                <div id="integralPreview" class="math-preview"></div>
             </div>
-            <div id="derivationSection" class="input-container" style="display: none;">
-                <div class="input-container">
-                    <label for="functionDeriv">Function:</label>
-                    <input type="text" id="functionDeriv" oninput="updateMath('functionDeriv', 'functionDerivPreview')">
-                </div>
-                <div id="functionDerivPreview" class="math-preview"></div>
+            <div id="resultContainer" style="margin-top: 20px;">
+                <h2>Results:</h2>
+                <div id="result" class="math-preview"></div>
+            </div>
+            <div class="calculateButton-container">
+                <button id="calculateButton">Calculate</button>
             </div>
         </div>
-        <button id="calculateButton">Calculate</button>
-        <div id="loadingOverlay" class="overlay">
-          <div class="overlay-content">
-            <div id="loadingIndicator">Loading...</div>
-          </div>
-        </div>
-        <div id="resultContainer" style="margin-top:20px;">
-            <h2>Results:</h2>
-            <div id="result" class="math-preview"></div>
+    </div>
+    <div id="loadingOverlay" class="overlay">
+        <div class="overlay-content">
+            <div id="loadingIndicator"></div>
         </div>
     </div>
     <script src="src/main.js" type="text/javascript"></script>
