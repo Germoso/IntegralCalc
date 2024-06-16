@@ -12,8 +12,8 @@ body {
 }
 
 .container {
-    width: 400px; /* Fixed width */
-    height: 500px; /* Fixed height */
+    min-width: 700px; /* Fixed width */
+    min-height: 600px; /* Increased height to accommodate results */
     padding: 20px;
     background-color: #1e1e1e;
     border-radius: 8px;
@@ -22,7 +22,7 @@ body {
     position: relative; /* Position relative for absolute positioning of button */
 }
 
-h1 {
+h1, h2 {
     color: #bb86fc;
     margin-bottom: 20px;
     text-align: center;
@@ -93,8 +93,11 @@ button:hover {
 #result {
     font-size: 18px;
     font-weight: bold;
-    text-align: right;
+    text-align: left; /* Change to left-align for better wrapping */
     color: #e0e0e0;
+    word-wrap: break-word; /* Enable word wrapping */
+    white-space: pre-wrap; /* Preserve whitespace */
+    overflow-wrap: break-word; /* Ensure long words break */
 }
 
 /* Full-screen overlay */
@@ -121,4 +124,15 @@ button:hover {
 #loadingIndicator {
     font-size: 24px;
     color: #bb86fc;
+}
+
+.math-preview {
+    margin-top: 10px;
+    background-color: #2b2b2b;
+    padding: 10px;
+    border-radius: 4px;
+    color: #e0e0e0;
+    word-wrap: break-word; /* Enable word wrapping */
+    white-space: pre-wrap; /* Preserve whitespace */
+    overflow-wrap: break-word; /* Ensure long words break */
 }

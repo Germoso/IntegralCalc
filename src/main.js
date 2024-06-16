@@ -31,13 +31,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Function to run the Python code
     async function calculate() {
         showLoading("Calculating...");
-        await new Promise(resolve => setTimeout(resolve, 0)); // Allow DOM to update
+        await new Promise(resolve => setTimeout(resolve, 50)); // Allow DOM to update
         const selectedType = document.querySelector('input[name="calcType"]:checked').value;
 
         if (selectedType === "integration") {
             const lowerBound = parseFloat(document.getElementById("lowerBound").value);
             const upperBound = parseFloat(document.getElementById("upperBound").value);
             const func = document.getElementById("function").value;
+            const formattedFunc = formatForLatex(func);
             const numPoints = 999999;  // Adjusting to a reasonable number of points
             const numSimulations = 10;  // Number of Monte Carlo simulations
 
@@ -78,10 +79,13 @@ integral, average_mc_integral
             try {
                 let result = pyodide.runPython(pythonCode);
                 const [regularIntegral, averageMonteCarloIntegral] = result.toJs();
-                resultDiv.innerHTML = `<p>Result: ${regularIntegral}</p>
-                                       <p>Approximation: ${averageMonteCarloIntegral}</p>`;
+                resultDiv.innerHTML = `
+                    <p>\\[ ${formatForLatex(regularIntegral.toString())} \\]</p>
+                    <p>\\[ ${formatForLatex(averageMonteCarloIntegral.toString())} \\]</p>`;
+                MathJax.typesetPromise([resultDiv]);
             } catch (error) {
-                resultDiv.innerHTML = `Error: ${error.message}`;
+                resultDiv.innerHTML = `<p style="color: red;">Error</p>`;
+                console.error(error);
             } finally {
                 hideLoading();
             }
@@ -106,9 +110,13 @@ derivative
             // Run the Python code
             try {
                 let result = pyodide.runPython(pythonCode);
-                resultDiv.innerHTML = `<p>f'(x) = ${result}</p>`;
+                const formattedFunc = formatForLatex(func);
+                const formattedResult = formatForLatex(result.toString());
+                resultDiv.innerHTML = `<p>\\[ f'(x) = ${formattedResult} \\]</p>`;
+                MathJax.typesetPromise([resultDiv]);
             } catch (error) {
-                resultDiv.innerHTML = `Error: ${error.message}`;
+                resultDiv.innerHTML = `<p style="color: red;">Error</p>`;
+                console.error(error);
             } finally {
                 hideLoading();
             }
@@ -132,3 +140,27 @@ derivative
         });
     });
 });
+
+function updateMath(inputId, previewId) {
+    const input = document.getElementById(inputId).value;
+    const formattedInput = formatForLatex(input);
+    const preview = document.getElementById(previewId);
+    preview.innerHTML = `$$f(x) = ${formattedInput}$$`;
+    MathJax.typesetPromise([preview]);
+}
+
+function updateIntegralMath() {
+    const lowerBound = document.getElementById("lowerBound").value;
+    const upperBound = document.getElementById("upperBound").value;
+    const func = document.getElementById("function").value;
+    const formattedFunc = formatForLatex(func);
+    const preview = document.getElementById("integralPreview");
+
+    preview.innerHTML = `$$\\int_{${lowerBound}}^{${upperBound}} ${formattedFunc} \\, dx$$`;
+    MathJax.typesetPromise([preview]);
+}
+
+function formatForLatex(input) {
+    // Replace division signs with LaTeX fraction syntax for complex expressions
+    return input.replace(/(\d+|\(.+?\)|\w+)\s*\/\s*(\d+|\(.+?\)|\w+)/g, '\\frac{$1}{$2}');
+}
