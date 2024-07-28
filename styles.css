@@ -1,158 +1,178 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .container {
-    min-width: 700px;
-    min-height: 600px;
-    padding: 20px;
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: left;
-    position: relative;
-    z-index: 1; /* Ensure container is above the overlay */
-    display: flex;
-    flex-direction: column;
+  /* min-width: 700px;
+  min-height: 600px; */
+  margin-top: 40px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+  z-index: 1; /* Ensure container is above the overlay */
+  display: flex;
+  flex-direction: column;
 }
 
 .tabs {
-    display: flex;
-    justify-content: flex-start; /* Align tabs to the top left */
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start; /* Align tabs to the top left */
+  margin-bottom: 20px;
 }
 
 .tab-button {
-    padding: 10px 20px;
-    background-color: #2b2b2b;
-    color: white;
-    border: none;
-    border-radius: 4px 4px 0 0;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    transition: background-color 0.3s;
-    margin-right: 5px;
+  padding: 10px 20px;
+  background-color: #2b2b2b;
+  color: white;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  margin-right: 5px;
 }
 
 .tab-button.active {
-    background-color: #bb86fc;
-}
-
-.tab-content {
-    display: none;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  background-color: #d8a600;
 }
 
 .tab-content.active {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-h1, h2 {
-    color: #bb86fc;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 500;
+#Calculator {
+  margin-top: 40px;
+}
+
+h1,
+h2 {
+  color: #d8a600;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
 }
 
 .radio-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-input[type="text"] {
-    width: calc(100% - 160px);
-    padding: 10px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    margin-left: 10px;
-    background-color: #2b2b2b;
-    color: #e0e0e0;
+input[type='text'] {
+  width: calc(100% - 160px);
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  margin-left: 10px;
+  background-color: #2b2b2b;
+  color: #e0e0e0;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #bb86fc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    transition: background-color 0.3s, transform 0.3s;
+  padding: 10px 20px;
+  background-color: #755b00;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #9b59b6;
-    transform: translateY(-2px);
+  background-color: rgb(139, 174, 0);
+  transform: translateY(-2px);
 }
 
 #result {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: left;
-    color: #e0e0e0;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  color: #e0e0e0;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    z-index: 2; /* Ensure overlay is above all other content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 2; /* Ensure overlay is above all other content */
 }
 
 .overlay-content {
-    background-color: #2b2b2b;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+  background-color: #2b2b2b;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 #loadingIndicator {
-    font-size: 24px;
-    color: #bb86fc;
+  font-size: 24px;
+  color: #d8a600;
 }
 
 .calculateButton-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  margin-top: 20px;
 }
 
 .math-preview {
-    margin-top: 10px;
-    background-color: #2b2b2b;
-    padding: 10px;
-    border-radius: 4px;
-    color: #e0e0e0;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
+  background-color: #2b2b2b;
+  padding: 10px;
+  border-radius: 4px;
+  color: #e0e0e0;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  margin-top: 20px;
+}
+
+/* #calculateButton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+} */
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#functionDeriv {
+  flex-grow: 1;
 }
